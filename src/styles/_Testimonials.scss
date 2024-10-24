@@ -1,0 +1,117 @@
+@use 'sass:color';
+@use './variables' as *;
+
+.testimonials-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  background-color: $color-gray-700; // Bakgrundsfärg för hela sektionen (light mode)
+  margin: 0;
+  width: 100vw;
+  padding: 6rem 10rem;
+
+  // Döljer sektionen på tablet och mobil
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  // Titel för testimonials
+  .testimonials-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -15rem;
+    padding-left: 50px;
+
+    h2 {
+      padding-bottom: 0rem;
+      font-size: 40px;
+      font-weight: 800;
+      color: $color-dark;
+      max-width: 350px;
+      line-height: 1.2;
+    }
+  }
+
+  // Grid för recensionerna
+  .testimonials-reviews {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    // Styling för varje testimonial
+    .testimonial {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px); // Flytta uppåt vid hover
+      }
+
+      // Header med citattecken och stjärnor
+      .testimonial-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        // Citatteckensbilden
+        .quote-icon {
+          width: 40px;
+          height: 40px;
+          margin-top: -5em; // Flytta upp ikonen ovanför boxen
+          position: relative;
+          z-index: 1; // Se till att ikonen visas ovanför boxen
+        }
+
+        // Stjärnorna
+        .stars {
+          color: #FFD43B; // Gula stjärnor
+          font-size: 1rem; // Öka storleken på stjärnorna för bättre synlighet
+        }
+      }
+
+      // Text för varje recension
+      p {
+        font-size: 1.1rem;
+        margin: 20px 0;
+        color: #888;
+        line-height: 1.6;
+      }
+
+      // Författarinformation (namn och titel)
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          width: 50px; // Gör författarbilden något större
+          height: 50px;
+          border-radius: 50%; // Gör bilden rund
+        }
+
+        .author-info {
+          h4 {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: bold;
+            color: #333;
+          }
+
+          p {
+            font-size: 1rem;
+            color: #888;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

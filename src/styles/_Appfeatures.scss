@@ -1,0 +1,179 @@
+@use 'sass:color';
+@use './variables' as *;
+
+.app-image {
+  display: none;
+}
+
+.app-features {
+  padding: 20px;
+
+  /* <<App Features Content>> */
+  .app-features-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* <<Features Section>> */
+    .features-section {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      /* <<App Features Header>> */
+      .app-features-header {
+        text-align: center;
+
+        h1 {
+          font-size: 24px;
+        }
+        p {
+          font-size: 16px;
+          margin: 10px 0;
+          color: $color-light-gray; // Using variable from _variables.scss
+        }
+      }
+
+      /* <<Features List>> */
+      .features-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        /* <<Feature Item>> */
+        .feature-item {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+
+          .feature-text {
+            max-width: 16rem;
+            padding-top: 1.5rem;
+
+            h5 {
+              font-size: 1.1rem;
+              color: $color-dark; // Light mode color
+              [data-theme="dark"] & {
+                color: $color-white-dark; // Dark mode color
+              }
+            }
+            p {
+              font-size: 1rem;
+              padding-top: 1rem;
+              color: $color-light-gray;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* <<Tablet Layout>> */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .app-features-content {
+      .features-section {
+        .app-features-header {
+          h1 {
+            font-size: 28px;
+          }
+        }
+
+        .features-list {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          justify-content: center;
+          align-items: center;
+
+          .feature-text {
+            h5 {
+              font-size: 18px;
+              color: $color-dark;
+              [data-theme="dark"] & {
+                color: $color-white-dark;
+              }
+            }
+            p {
+              font-size: 14px;
+              color: $color-light-gray;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* <<Mobile Layout>> */
+  @media (max-width: 768px) {
+    .app-features-content {
+      .features-section {
+        .features-list {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  /* <<Desktop Layout>> */
+  @media (min-width: 1400px) {
+    padding: 6.875rem;
+    display: flex;
+    justify-content: center;
+
+    .app-features-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      gap: 50px;
+
+      .app-image {
+        display: block;
+      }
+
+      .features-section {
+        width: 60%;
+        text-align: left;
+
+        .app-features-header {
+          padding-bottom: 4rem;
+          text-align: left;
+          h1 {
+            font-size: 36px;
+          }
+        }
+
+        .features-list {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 3rem;
+
+          .feature-item {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+
+            .feature-text {
+              h5 {
+                font-size: 20px;
+                margin: 0;
+                color: $color-dark;
+                [data-theme="dark"] & {
+                  color: $color-white-dark;
+                }
+              }
+              p {
+                font-size: 16px;
+                margin: 0;
+                color: $color-light-gray;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

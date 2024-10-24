@@ -1,0 +1,212 @@
+@use 'sass:color';
+@use './variables' as *;
+
+
+.faq-section {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 2rem;
+  padding: 4rem 6rem;
+
+  @media (min-width: 1025px) {
+    grid-template-columns: 40% 60%; 
+    align-items: start;
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto auto auto; 
+    grid-template-areas: 
+      "header"
+      "faq"
+      "contact"; 
+    text-align: center;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; 
+  }
+}
+
+/* <<FAQ Header>> */
+.faq-header {
+  grid-area: header;
+  text-align: start;
+
+  h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+    color: $color-gray; // Använd färgvariabler om tillgängliga
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 1025px) {
+    grid-column: 1;
+  }
+
+  @media (max-width: 1024px) {
+    text-align: center;
+    h2, p {
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+    h2, p {
+      margin: 0 auto;
+    }
+  }
+}
+
+/* <<FAQ Contact Options>> */
+.faq-contact-options {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 10rem;
+  width: 100%;
+  grid-area: contact;
+
+  .contact-option {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    img {
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      color: $color-primary; // Lägg till din primära färg här
+
+      &:after {
+        content: "→";
+        margin-left: 0.5rem;
+        transition: margin-left 0.3s ease-in-out;
+      }
+
+      &:hover:after {
+        margin-left: 1rem;
+      }
+
+      &:hover {
+        background-color: lighten($color-primary, 20%); // Justera färg för hover
+      }
+    }
+  }
+
+  @media (min-width: 1025px) {
+    grid-column: 1;
+  }
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+/* <<FAQ Body>> */
+.faq-body {
+  grid-area: faq;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .faq-questions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    button.faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 0.75rem;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      width: 100%;
+
+      img {
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+
+      &.active img {
+        transform: rotate(180deg);
+      }
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 0.5rem;
+      font-size: 16px;
+      font-weight: 400;
+      color: $color-gray;
+
+      &.show {
+        display: block;
+      }
+    }
+  }
+
+  @media (min-width: 1025px) {
+    grid-column: 2;
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+/* <<Single Contact Button>> */
+.single-contact-btn {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: $color-primary; // Lägg till din färgvariabel här
+    color: $color-white;
+    text-align: center;
+    border-radius: 0.75rem;
+    font-weight: 600;
+  }
+}

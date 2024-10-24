@@ -1,0 +1,40 @@
+@use 'sass:color';
+@use './variables' as *;
+
+// Globala stilar
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgb(0, 0, 0);
+}
+
+// Body-stil
+body {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  background-color: $color-white; // Använd variabel från _variables.scss
+
+  /* Dark mode body background */
+  [data-theme="dark"] & {
+    background-color: $color-dark-bg; // Använd variabel från _variables.scss
+  }
+}
+
+// Länkar
+a {
+  color: $color-primary; // Använd variabel från _variables.scss
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  /* Dark mode link color */
+  [data-theme="dark"] & {
+    color: $color-white-dark; // Använd variabel från _variables.scss
+  }
+}

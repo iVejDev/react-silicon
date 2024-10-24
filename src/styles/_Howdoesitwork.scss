@@ -1,0 +1,205 @@
+@use 'sass:color';
+@use './variables' as *;
+
+.how-it-works {
+  background-color: $color-gray-700; // Default för light mode
+
+  /* <<Container>> */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+
+    /* <<Section Title>> */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      padding: 5.3rem;
+      color: $color-text-current;
+    }
+
+    /* <<Step Images>> */
+    .step-images {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 40px;
+      gap: 5.3rem;
+
+      /* Visa endast desktop-bilder i desktop-läge */
+      .desktop-image {
+        display: block;
+        height: auto;
+        width: auto;
+      }
+
+      /* Döljer tablet och mobil-bilder i desktop-läge */
+      .tablet-image,
+      .mobile-image {
+        display: none;
+      }
+    }
+
+    /* Visa endast desktop-text i desktop-läge */
+    .desktop-text {
+      display: block;
+      color: $color-text-current;
+    }
+
+    /* Döljer tablet- och mobilbeskrivningar i desktop-läge */
+    .tablet-text,
+    .mobile-text {
+      display: none;
+    }
+
+    /* <<Step Description>> */
+    .step-description {
+      text-align: center;
+      margin: auto;
+      padding-bottom: 6.5rem;
+      padding-top: 3.1rem;
+
+      h3 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: $color-text-current;
+      }
+
+      p {
+        font-size: 1rem;
+        color: $color-muted-text-current;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+/* <<Tablet Layout>> */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .how-it-works {
+    .container {
+      padding: 0 15px;
+
+      .section-title {
+        font-size: 2rem; /* Mindre rubrik för tablet */
+        padding: 4rem;
+        color: $color-text-current;
+      }
+
+      .step-images {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 30px;
+
+        /* Visa endast tablet-bilder i tablet-läge */
+        .tablet-image {
+          display: block;
+          width: 25%;
+          height: auto;
+        }
+
+        .desktop-image,
+        .mobile-image {
+          display: none;
+        }
+      }
+
+      .tablet-text {
+        display: block;
+        color: $color-text-current;
+      }
+
+      .desktop-text,
+      .mobile-text {
+        display: none;
+      }
+
+      .step-description {
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        max-width: 600px;
+
+        h3 {
+          font-size: 1.6rem;
+          margin-bottom: 10px;
+          color: $color-text-current;
+        }
+
+        p {
+          font-size: 0.9rem;
+          color: $color-muted-text-current;
+          max-width: 350px;
+        }
+      }
+    }
+  }
+}
+
+/* <<Mobile Layout>> */
+@media (max-width: 767px) {
+  .how-it-works {
+    .container {
+      padding: 0 10px;
+
+      .section-title {
+        font-size: 1.8rem; /* Mindre rubrik för mobil */
+        padding: 3rem;
+        color: $color-text-current;
+      }
+
+      .step-images {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 20px;
+
+        /* Visa endast mobil-bilder i mobil-läge */
+        .mobile-image {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+
+        .desktop-image,
+        .tablet-image {
+          display: none;
+        }
+      }
+
+      .mobile-text {
+        display: block;
+        color: $color-text-current;
+      }
+
+      .desktop-text,
+      .tablet-text {
+        display: none;
+      }
+
+      .step-description {
+        padding-top: 1.5rem;
+        padding-bottom: 3rem;
+        max-width: 350px;
+
+        h3 {
+          font-size: 1.4rem;
+          margin-bottom: 8px;
+          color: $color-text-current;
+        }
+
+        p {
+          font-size: 0.85rem;
+          color: $color-muted-text-current;
+          max-width: 320px;
+        }
+      }
+    }
+  }
+}

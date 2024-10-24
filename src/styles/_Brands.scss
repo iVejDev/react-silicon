@@ -1,0 +1,38 @@
+@use 'sass:color';
+@use './variables' as *;
+
+#brands {
+  padding: 6rem 0;
+  display: none; // Dölj brands-sektionen i mobilt läge
+
+  /* <<Container>> */
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap; // Gör att brands radas upp snyggt
+  }
+
+  /* <<Brand-box>> */
+  .brand-box {
+    border: 1px solid $color-border-gray; // Border color från _variables.scss
+    border-radius: 8px;
+    height: 100px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      transform: scale(1.05); // Zooma in vid hover
+    }
+  }
+}
+
+// Media queries för större skärmar
+@media (min-width: 768px) {
+  #brands {
+    display: flex;
+  }
+}

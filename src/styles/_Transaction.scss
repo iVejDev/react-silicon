@@ -1,0 +1,180 @@
+@use 'sass:color';
+@use './variables' as *;
+
+.transaction-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  max-width: 1200px;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  margin: 0 auto;
+
+  // Döljer sektionen på tablet och mobil
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+/* <<Transaction Item>> */
+// Styling för vänster och höger kolumner
+.transaction-item {
+  padding: 20px;
+
+  // <<Right Column>> 
+  &.transaction-right {
+    text-align: left;
+
+    h2 {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 130%;
+      max-width: 400px;
+      padding-left: 20px;
+    }
+
+    .payment-details {
+      padding-left: 20px;
+
+      .payment-feature {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        text-align: center;
+
+        img {
+          width: 60px;
+          height: 60px;
+        }
+
+        p {
+          font-size: 1rem;
+          color: #555;
+          margin-top: 10px;
+          text-align: start;
+        }
+      }
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: $color-primary;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+      padding-left: 20px;
+
+      &:hover {
+        background-color: color.scale($color-primary, $lightness: -10%);
+      }
+
+      &::after {
+        content: ' →'; // Lägg till pil efter texten
+        padding-left: 5px;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // <<Left Column>> 
+  &.transaction-left {
+    h2 {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 130%;
+      max-width: 400px;
+    }
+
+    ul {
+      list-style: none;
+      padding-top: 3rem;
+      margin-bottom: 20px;
+
+      li {
+        font-size: 1.1rem;
+        color: #4f4f4f;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+
+        &::before {
+          content: "✓";
+          color: $color-primary;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: $color-primary;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: color.scale($color-primary, $lightness: -10%);
+      }
+
+      &::after {
+        content: ' →'; // Lägg till pil efter texten
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
+/* <<Payment Details>> */
+// För att placera ikonerna och texten bredvid varandra
+.payment-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding-top: 3rem;
+
+  .payment-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: center;
+
+    img {
+      width: 60px;
+      height: 60px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #555;
+      margin-top: 10px;
+    }
+  }
+}
+
+/* <<Right Column Button>> */
+// Placera knappen under ikonerna och texten
+.transaction-item.transaction-right .btn {
+  display: inline-block;
+  background-color: $color-primary;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: color.scale($color-primary, $lightness: -10%);
+  }
+}
