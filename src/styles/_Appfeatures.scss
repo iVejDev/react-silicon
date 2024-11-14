@@ -7,7 +7,7 @@
 
 .app-features {
   padding: 20px;
-  background-color: $color-secondary; // Ljus bakgrund för ljus läge
+  background-color: $color-secondary; 
 
   /* Dark mode för bakgrundsfärg */
   [data-theme="dark"] & {
@@ -32,7 +32,7 @@
 
         h1 {
           font-size: 24px;
-          color: $color-dark; // Light mode color
+          color: $color-dark; 
 
           [data-theme="dark"] & {
             color: $color-white-dark;
@@ -68,10 +68,10 @@
 
             h5 {
               font-size: 1.1rem;
-              color: $color-dark; // Light mode color
+              color: $color-dark; 
 
               [data-theme="dark"] & {
-                color: $color-white-dark; // Dark mode color
+                color: $color-white-dark; 
               }
             }
 
