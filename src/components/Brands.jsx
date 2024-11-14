@@ -1,4 +1,4 @@
-import React from 'react';
+
 import '../styles/_brands.scss';
 import brand1 from '../assets/img/brand-1.svg';
 import brand2 from '../assets/img/brand-2.svg';

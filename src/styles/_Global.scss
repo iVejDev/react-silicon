@@ -1,7 +1,7 @@
 @use 'sass:color';
 @use './variables' as *;
 
-// Globala stilar
+// Global styles
 * {
   margin: 0;
   padding: 0;
@@ -9,32 +9,40 @@
   -webkit-tap-highlight-color: rgb(0, 0, 0);
 }
 
-// Body-stil
+// Light mode Body style
 body {
   font-family: "Manrope", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
-  background-color: $color-white; // Använd variabel från _variables.scss
-
-  /* Dark mode body background */
-  [data-theme="dark"] & {
-    background-color: $color-dark-bg; // Använd variabel från _variables.scss
-  }
+  background-color: $color-white; // Uses variable from _variables.scss
+  color: $color-dark;
 }
 
-// Länkar
+// Dark mode Body style
+[data-theme="dark"] body {
+  background-color: $color-dark-bg; // Dark mode background color
+  color: $color-white-dark;
+}
+
+// Light mode link style
 a {
-  color: $color-primary; // Använd variabel från _variables.scss
+  color: $color-primary;
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
   }
+}
 
-  /* Dark mode link color */
-  [data-theme="dark"] & {
-    color: $color-white-dark; // Använd variabel från _variables.scss
+// Dark mode link style
+[data-theme="dark"] a {
+  color: $color-white-dark;
+
+  &:hover {
+    text-decoration: underline;
   }
 }
+
+// Lägg till fler globala dark mode-stilar här om du behöver

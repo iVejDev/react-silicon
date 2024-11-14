@@ -4,6 +4,12 @@
 #brands {
   padding: 6rem 0;
   display: none; // Dölj brands-sektionen i mobilt läge
+  background-color: $color-secondary; // Ljus bakgrund för standardläge
+
+  /* Dark mode background för hela sektionen */
+  [data-theme="dark"] & {
+    background-color: $color-dark-bg;
+  }
 
   /* <<Container>> */
   .container {
@@ -23,10 +29,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: $color-secondary;
 
     &:hover {
       transform: scale(1.05); // Zooma in vid hover
     }
+  }
+
+  // Dark mode-stilar för brand-box
+  [data-theme="dark"] & .brand-box {
+    border: 1px solid $color-border-dark; // Dark mode border color
+    background-color: $color-secondary-dark;
   }
 }
 

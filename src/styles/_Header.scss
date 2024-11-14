@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-tap-highlight-color: rgb(0, 0, 0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 // Body-stil
@@ -49,7 +49,7 @@ header {
   .container {
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: auto 1fr auto;
     gap: 1.5rem;
     padding: 1rem 0;
 
@@ -57,7 +57,7 @@ header {
       gap: 3rem;
     }
 
-    @media (min-width: 1400px) {
+    @media (min-width: 1024px) {
       grid-template-columns: auto 1fr auto auto;
       gap: 2rem;
     }
@@ -83,8 +83,63 @@ header {
   .navbar {
     display: none;
 
-    @media (min-width: 1400px) {
-      display: block;
+    &.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      width: 80%;
+      max-width: 300px;
+      background-color: rgba(255, 255, 255, 0.9); // Halvtransparent vit bakgrund
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      border-radius: 8px; // Rundade hörn
+
+      a {
+        display: block;
+        margin-bottom: 1.5rem;
+        color: $color-dark;
+        text-align: center;
+
+        &:hover {
+          color: $color-primary;
+        }
+
+        /* Dark mode nav text color */
+        [data-theme="dark"] & {
+          color: $color-white-dark;
+        }
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: $color-dark;
+
+        [data-theme="dark"] & {
+          color: $color-white-dark;
+        }
+      }
+    }
+
+    @media (min-width: 1024px) {
+      display: flex;
+      position: static;
+      flex-direction: row;
+      gap: 2rem;
+      padding: 0;
+      width: auto;
+      height: auto;
+      box-shadow: none;
+      background-color: transparent;
     }
   }
 
@@ -92,28 +147,50 @@ header {
     background-color: transparent;
     border: none;
     font-size: 2rem;
+    cursor: pointer;
+    color: $color-dark;
+    z-index: 11;
 
-    @media (min-width: 1400px) {
+    @media (min-width: 1024px) {
       display: none;
+    }
+
+    [data-theme="dark"] & {
+      color: $color-white-dark;
     }
   }
 
   #auth-signin {
     display: none;
 
-    // @media (min-width: 1400px) {
-    //     display: block;
-    // }
+    @media (min-width: 1024px) {
+      display: block;
+    }
 
     background-color: $color-primary;
     color: $color-white;
 
-    /* Dark mode button text and background color */
     [data-theme="dark"] & {
       background-color: $color-primary-dark;
       color: $color-white;
     }
   }
+}
+
+// Overlay för mobilmenyn
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); // Halvtransparent mörk bakgrund
+  z-index: 9;
+  display: none;
+}
+
+.navbar.open ~ .menu-overlay {
+  display: block;
 }
 
 // Primärknappar
@@ -131,7 +208,6 @@ header {
     background-color: $color-gray;
   }
 
-  /* Dark mode button background and text color */
   [data-theme="dark"] & {
     background-color: $color-primary-dark;
     color: $color-white;
@@ -149,10 +225,11 @@ header {
   gap: 10px;
 
   .label {
-    display: none;
+    font-size: 1rem;
+    color: $color-dark;
 
-    @media (min-width: 768px) {
-      display: block;
+    [data-theme="dark"] & {
+      color: $color-white-dark;
     }
   }
 }
@@ -198,7 +275,6 @@ header {
       }
     }
 
-    /* Dark mode toggle switch */
     [data-theme="dark"] & {
       background-color: $color-primary-dark;
     }

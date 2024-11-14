@@ -30,7 +30,8 @@ $color-border-current: $color-border-gray; // light mode border
 $color-muted-text-current: $color-gray; // muted text in light mode
 $color-gradient-current: $color-gradient1; // gradient
 $color-muted-text-dark: #6b7280; // Example muted text color for dark mode
-
+$color-border-dark: #374151; // Lägg till den mörka färgen du vill ha för dark mode border
+$color-dark-secondary: #2c3e50; 
 // Dark Mode Variables to Switch
 $color-background-dark-current: $color-dark-bg;
 $color-text-dark-current: $color-white-dark;
@@ -48,3 +49,25 @@ $padding-medium: 1rem;
 // Font sizes
 $font-size-main: 2rem;
 $font-size-subtext: 1.2rem;
+
+// _variables.scss
+$color-background-dark: #121212;
+$color-white-dark: #ffffff;
+$color-muted-text-dark: #b3b3b3;
+$color-secondary-dark: #333333;
+$color-primary-dark: #007aff;
+
+
+// Define colors for light and dark mode
+$color-dark-background: #121212; // Example dark background color
+$color-white: #FFFFFF; // Example white color for text
+$color-primary: #6C63FF; // Example primary button color
+$color-muted-text-current: #A1A1A1; // Muted text color
+// Add any other colors you need for dark mode
+// Variabler för text- och bakgrundsfärger
+$color-gray: #888888; // En grå färg som används för text
+$color-white: #ffffff; // Vit textfärg
+$color-dark-background: #121212; // Mörk bakgrundsfärg för mörkt läge
+$color-background-current: #f9f9f9; // Bakgrundsfärg för ljus läge
+$color-primary: #6C63FF; // Primär färg för knappar eller andra viktiga element
+$color-muted-text-current: #A1A1A1; // Färg för mindre framträdande text

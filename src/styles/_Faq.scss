@@ -1,10 +1,9 @@
 @use 'sass:color';
 @use './variables' as *;
 
-
 .faq-section {
   display: grid;
-  grid-template-columns: 1fr; 
+  grid-template-columns: 1fr;
   gap: 2rem;
   padding: 4rem 6rem;
 
@@ -42,7 +41,7 @@
 
   p {
     font-size: 1.5rem;
-    color: $color-gray; // Använd färgvariabler om tillgängliga
+    color: $color-gray;
     margin-bottom: 2rem;
   }
 
@@ -94,7 +93,7 @@
       text-decoration: none;
       font-size: 1rem;
       font-weight: bold;
-      color: $color-primary; // Lägg till din primära färg här
+      color: $color-primary;
 
       &:after {
         content: "→";
@@ -104,10 +103,6 @@
 
       &:hover:after {
         margin-left: 1rem;
-      }
-
-      &:hover {
-        background-color: lighten($color-primary, 20%); // Justera färg för hover
       }
     }
   }
@@ -131,6 +126,12 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  .loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: $color-primary;
+  }
 
   .faq-questions {
     display: flex;
@@ -203,10 +204,48 @@
     display: block;
     margin-top: 2rem;
     padding: 1rem;
-    background-color: $color-primary; // Lägg till din färgvariabel här
+    background-color: $color-primary;
     color: $color-white;
     text-align: center;
     border-radius: 0.75rem;
     font-weight: 600;
+  }
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] {
+  .faq-section {
+    background-color: $color-dark-bg; // Dark background for FAQ section
+  }
+
+  .faq-header h2, 
+  .faq-header p {
+    color: $color-white-dark; // Text color for FAQ header in dark mode
+  }
+
+  .faq-contact-options .contact-option {
+    background-color: $color-dark-secondary; // Darker background for contact options
+    border-color: $color-border-dark-current; // Dark border color for contact options
+  }
+
+  .faq-contact-options .contact-option a {
+    color: $color-primary-dark; // Link color for contact options in dark mode
+  }
+
+  .faq-body {
+    .faq-question {
+      background-color: $color-dark-secondary; // Dark background for FAQ questions
+      color: $color-white-dark; // Text color for FAQ questions in dark mode
+    }
+
+    .faq-answer {
+      background-color: $color-dark-bg; // Dark background for FAQ answers
+      color: $color-muted-text-dark-current; // Muted text for FAQ answers in dark mode
+    }
+  }
+
+  .single-contact-btn {
+    background-color: $color-primary-dark; // Button background in dark mode
+    color: $color-white-dark; // Button text color in dark mode
   }
 }

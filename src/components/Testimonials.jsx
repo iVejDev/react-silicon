@@ -1,57 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../styles/_testimonials.scss';
 import quotes from '../assets/img/quotes.svg';
-import fannie from '../assets/img/fannie.svg';
-import albert from '../assets/img/albert.svg';
 
 const Testimonials = () => {
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    // Hämta testimonials-data från API:t
+    axios.get('https://win24-assignment.azurewebsites.net/api/testimonials')
+      .then(response => {
+        console.log('Testimonials API response:', response.data);
+        setTestimonials(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching testimonials:', error);
+      });
+  }, []);
+
   return (
     <section className="testimonials-section">
       <div className="testimonials-title">
         <h2>Clients are Loving Our App</h2>
       </div>
       <div className="testimonials-reviews">
-        <div className="testimonial">
-          <div className="testimonial-header">
-            <img src={quotes} alt="Quote Icon" className="quote-icon" />
-            <div className="stars">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star-half-alt"></i>
+        {testimonials.map((testimonial) => (
+          <div className="testimonial" key={testimonial.id}>
+            <div className="testimonial-header">
+              <img src={quotes} alt="Quote Icon" className="quote-icon" />
+              <div className="stars">
+                {[...Array(testimonial.starRating)].map((_, i) => (
+                  <i key={i} className="fas fa-star"></i>
+                ))}
+              </div>
+            </div>
+            <p>{testimonial.comment}</p>
+            <div className="testimonial-author">
+              <img src={testimonial.avatarUrl || 'default-image-url'} alt={testimonial.author} />
+              <div className="author-info">
+                <h4>{testimonial.author}</h4>
+                <p>{testimonial.jobRole}</p>
+              </div>
             </div>
           </div>
-          <p>Sit pretium aliquam tempor, orci dolor sed maecenas rutrum sagittis.</p>
-          <div className="testimonial-author">
-            <img src={fannie} alt="Fannie Summers" />
-            <div className="author-info">
-              <h4>Fannie Summers</h4>
-              <p>Designer</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="testimonial">
-          <div className="testimonial-header">
-            <img src={quotes} alt="Quote Icon" className="quote-icon" />
-            <div className="stars">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-            </div>
-          </div>
-          <p>Nunc senectus leo vel venenatis accumsan vestibulum sollicitudin amet porttitor.</p>
-          <div className="testimonial-author">
-            <img src={albert} alt="Albert Flores" />
-            <div className="author-info">
-              <h4>Albert Flores</h4>
-              <p>Developer</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

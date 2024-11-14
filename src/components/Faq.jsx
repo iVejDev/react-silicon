@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
-import '../styles/_Faq.scss'; // Kontrollera att sökvägen är korrekt
+import '../styles/_Faq.scss';
 import arrows from '../assets/img/arrows.svg';
 import smallphone from '../assets/img/smallphone.svg';
 import greenchat from '../assets/img/greenchat.svg';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Faq = () => {
+  const [faqData, setFaqData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get('https://win24-assignment.azurewebsites.net/api/faq') // Uppdaterad URL
+      .then(response => {
+        console.log('API response:', response.data); // Kontrollera API-datan
+        setFaqData(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching FAQ:', error);
+        setLoading(false);
+      });
+  }, []);
 
   const toggleFaq = (index) => {
     setActiveIndex(index === activeIndex ? null : index);
@@ -32,39 +48,33 @@ const Faq = () => {
       </div>
 
       <div className="faq-body">
-        <div className="faq-questions">
-          {[
-            'Is any of my personal information stored in the App?',
-            'What formats can I download my transaction history in?',
-            'Can I schedule future transfers?',
-            'When can I use Banking App services?',
-            'Can I create my own password that is easy for me to remember?',
-            'What happens if I forget or lose my password?',
-          ].map((question, index) => (
-            <div key={index}>
-              <button
-                className={`faq-question ${activeIndex === index ? 'active' : ''}`}
-                onClick={() => toggleFaq(index)}
-              >
-                {question}
-                <img src={arrows} alt="Arrow icon" />
-              </button>
-              <div className={`faq-answer ${activeIndex === index ? 'show' : ''}`}>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc duis id aenean gravida tincidunt.
-                </p>
+        {loading ? (
+          <p className="loading">Loading FAQs...</p>
+        ) : faqData.length === 0 ? (
+          <p>No FAQs available.</p>
+        ) : (
+          <div className="faq-questions">
+            {faqData.map((item, index) => (
+              <div key={index}>
+                <button
+                  className={`faq-question ${activeIndex === index ? 'active' : ''}`}
+                  onClick={() => toggleFaq(index)}
+                >
+                  {item.title}
+                  <img src={arrows} alt="Arrow icon" />
+                </button>
+                <div className={`faq-answer ${activeIndex === index ? 'show' : ''}`}>
+                  <p>{item.content}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <a href="#" className="single-contact-btn">Contact us now</a>
     </section>
   );
 };
-
-console.log('FAQ component is rendering');
-
 
 export default Faq;

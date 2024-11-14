@@ -2,7 +2,12 @@
 @use './variables' as *;
 
 .how-it-works {
-  background-color: $color-gray-700; // Default för light mode
+  background-color: $color-gray-700; // Ljuslägesfärg
+
+  /* Dark mode-stöd för bakgrundsfärg */
+  [data-theme="dark"] & {
+    background-color: $color-secondary-dark; // Mörkare bakgrundsfärg
+  }
 
   /* <<Container>> */
   .container {
@@ -17,6 +22,11 @@
       font-weight: bold;
       padding: 5.3rem;
       color: $color-text-current;
+
+      /* Dark mode textfärg */
+      [data-theme="dark"] & {
+        color: $color-white-dark;
+      }
     }
 
     /* <<Step Images>> */
@@ -26,27 +36,28 @@
       margin-bottom: 40px;
       gap: 5.3rem;
 
-      /* Visa endast desktop-bilder i desktop-läge */
       .desktop-image {
         display: block;
         height: auto;
         width: auto;
       }
 
-      /* Döljer tablet och mobil-bilder i desktop-läge */
       .tablet-image,
       .mobile-image {
         display: none;
       }
     }
 
-    /* Visa endast desktop-text i desktop-läge */
     .desktop-text {
       display: block;
       color: $color-text-current;
+
+      /* Dark mode textfärg */
+      [data-theme="dark"] & {
+        color: $color-white-dark;
+      }
     }
 
-    /* Döljer tablet- och mobilbeskrivningar i desktop-läge */
     .tablet-text,
     .mobile-text {
       display: none;
@@ -64,6 +75,11 @@
         margin-bottom: 10px;
         font-weight: bold;
         color: $color-text-current;
+
+        /* Dark mode textfärg */
+        [data-theme="dark"] & {
+          color: $color-white-dark;
+        }
       }
 
       p {
@@ -71,6 +87,11 @@
         color: $color-muted-text-current;
         max-width: 400px;
         margin: 0 auto;
+
+        /* Dark mode textfärg */
+        [data-theme="dark"] & {
+          color: $color-muted-text-dark;
+        }
       }
     }
   }
@@ -83,9 +104,13 @@
       padding: 0 15px;
 
       .section-title {
-        font-size: 2rem; /* Mindre rubrik för tablet */
+        font-size: 2rem;
         padding: 4rem;
         color: $color-text-current;
+
+        [data-theme="dark"] & {
+          color: $color-white-dark;
+        }
       }
 
       .step-images {
@@ -96,7 +121,6 @@
         gap: 1rem;
         margin-bottom: 30px;
 
-        /* Visa endast tablet-bilder i tablet-läge */
         .tablet-image {
           display: block;
           width: 25%;
@@ -112,6 +136,10 @@
       .tablet-text {
         display: block;
         color: $color-text-current;
+
+        [data-theme="dark"] & {
+          color: $color-white-dark;
+        }
       }
 
       .desktop-text,
@@ -128,12 +156,20 @@
           font-size: 1.6rem;
           margin-bottom: 10px;
           color: $color-text-current;
+
+          [data-theme="dark"] & {
+            color: $color-white-dark;
+          }
         }
 
         p {
           font-size: 0.9rem;
           color: $color-muted-text-current;
           max-width: 350px;
+
+          [data-theme="dark"] & {
+            color: $color-muted-text-dark;
+          }
         }
       }
     }
@@ -147,9 +183,13 @@
       padding: 0 10px;
 
       .section-title {
-        font-size: 1.8rem; /* Mindre rubrik för mobil */
+        font-size: 1.8rem;
         padding: 3rem;
         color: $color-text-current;
+
+        [data-theme="dark"] & {
+          color: $color-white-dark;
+        }
       }
 
       .step-images {
@@ -160,7 +200,6 @@
         gap: 1.5rem;
         margin-bottom: 20px;
 
-        /* Visa endast mobil-bilder i mobil-läge */
         .mobile-image {
           display: block;
           width: 100%;
@@ -176,6 +215,10 @@
       .mobile-text {
         display: block;
         color: $color-text-current;
+
+        [data-theme="dark"] & {
+          color: $color-white-dark;
+        }
       }
 
       .desktop-text,
@@ -192,12 +235,20 @@
           font-size: 1.4rem;
           margin-bottom: 8px;
           color: $color-text-current;
+
+          [data-theme="dark"] & {
+            color: $color-white-dark;
+          }
         }
 
         p {
           font-size: 0.85rem;
           color: $color-muted-text-current;
           max-width: 320px;
+
+          [data-theme="dark"] & {
+            color: $color-muted-text-dark;
+          }
         }
       }
     }

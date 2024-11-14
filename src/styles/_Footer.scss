@@ -5,7 +5,15 @@ footer {
   font-size: 14px;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  color: $color-gray; // Använd variabel från _variables.scss om definierad där, annars behåll den lokalt.
+  color: $color-gray; // Standard textfärg för ljus läge
+
+  background-color: $color-background-current; // Standard bakgrundsfärg
+
+  // Mörkt läge
+  &[data-theme="dark"] {
+    color: $color-white; // Ändra textfärgen för mörkt läge
+    background-color: $color-dark-background; // Bakgrundsfärg för mörkt läge
+  }
 
   .container {
     display: flex;

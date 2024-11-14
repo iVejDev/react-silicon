@@ -9,8 +9,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 40px 50px;
-    background-color: $color-secondary-current;
+    background-color: $color-secondary-current; // Light background
     border-radius: 12px;
+    transition: background-color 0.3s ease; // Smooth transition for dark mode
 
     /* <<Left Section>> */
     .newsletter-left {
@@ -27,7 +28,7 @@
             font-size: 1.25rem;
             font-weight: 600;
             line-height: 1.5;
-            color: $color-text-current;
+            color: $color-text-current; // Default text color
         }
     }
 
@@ -70,6 +71,29 @@
                 &:hover {
                     background-color: color.adjust($color-primary, $lightness: -10%);
                 }
+            }
+        }
+    }
+
+    /* Dark mode styles */
+    [data-theme="dark"] & {
+        background-color: $color-dark-background; // Apply dark background for dark mode
+        .newsletter-left p {
+            color: $color-white; // Lighten text color in dark mode
+        }
+        .newsletter-right {
+            .newsletter-form input[type="email"],
+            .newsletter-right button {
+                background-color: $color-dark-background; // Darken the form inputs in dark mode
+                color: $color-white; // Lighten text inside the form fields
+            }
+
+            .newsletter-form input[type="email"] {
+                border: 1px solid $color-white; // Light border for input fields
+            }
+
+            .newsletter-form button {
+                background-color: $color-primary-dark; // Darken button in dark mode
             }
         }
     }

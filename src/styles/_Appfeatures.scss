@@ -7,6 +7,12 @@
 
 .app-features {
   padding: 20px;
+  background-color: $color-secondary; // Ljus bakgrund för ljus läge
+
+  /* Dark mode för bakgrundsfärg */
+  [data-theme="dark"] & {
+    background-color: $color-secondary-dark;
+  }
 
   /* <<App Features Content>> */
   .app-features-content {
@@ -26,11 +32,21 @@
 
         h1 {
           font-size: 24px;
+          color: $color-dark; // Light mode color
+
+          [data-theme="dark"] & {
+            color: $color-white-dark;
+          }
         }
+
         p {
           font-size: 16px;
           margin: 10px 0;
-          color: $color-light-gray; // Using variable from _variables.scss
+          color: $color-light-gray;
+
+          [data-theme="dark"] & {
+            color: $color-muted-text-dark;
+          }
         }
       }
 
@@ -53,14 +69,20 @@
             h5 {
               font-size: 1.1rem;
               color: $color-dark; // Light mode color
+
               [data-theme="dark"] & {
                 color: $color-white-dark; // Dark mode color
               }
             }
+
             p {
               font-size: 1rem;
               padding-top: 1rem;
               color: $color-light-gray;
+
+              [data-theme="dark"] & {
+                color: $color-muted-text-dark;
+              }
             }
           }
         }
@@ -89,6 +111,7 @@
             h5 {
               font-size: 18px;
               color: $color-dark;
+
               [data-theme="dark"] & {
                 color: $color-white-dark;
               }
@@ -96,6 +119,10 @@
             p {
               font-size: 14px;
               color: $color-light-gray;
+
+              [data-theme="dark"] & {
+                color: $color-muted-text-dark;
+              }
             }
           }
         }
@@ -141,8 +168,14 @@
         .app-features-header {
           padding-bottom: 4rem;
           text-align: left;
+
           h1 {
             font-size: 36px;
+            color: $color-dark;
+
+            [data-theme="dark"] & {
+              color: $color-white-dark;
+            }
           }
         }
 
@@ -161,14 +194,20 @@
                 font-size: 20px;
                 margin: 0;
                 color: $color-dark;
+
                 [data-theme="dark"] & {
                   color: $color-white-dark;
                 }
               }
+
               p {
                 font-size: 16px;
                 margin: 0;
                 color: $color-light-gray;
+
+                [data-theme="dark"] & {
+                  color: $color-muted-text-dark;
+                }
               }
             }
           }

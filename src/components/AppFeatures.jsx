@@ -1,4 +1,4 @@
-import React from 'react';
+
 import '../styles/_Appfeatures.scss';
 import telefonmedvisa from '../assets/img/telefonmedvisa.svg';
 import icon1 from '../assets/img/icon-1.svg';

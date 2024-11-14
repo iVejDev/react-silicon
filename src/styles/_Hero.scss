@@ -3,14 +3,28 @@
 
 /* <<Hero Section start>> */
 #hero {
-  background: rgb(99, 102, 241);
-  background: linear-gradient(0deg, rgba(99, 102, 241, 0.1) 0%, rgba(218, 70, 239, 0.05) 42%, rgba(241, 244, 253, 0.07) 83%);
+  background: linear-gradient(
+    0deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(218, 70, 239, 0.05) 42%,
+    rgba(241, 244, 253, 0.07) 83%
+  );
   padding-bottom: 2rem;
   padding-top: 5rem;
   overflow: hidden;
 
   @media (min-width: 768px) {
     padding-bottom: 0;
+  }
+
+  /* Dark mode background */
+  [data-theme="dark"] & {
+    background: linear-gradient(
+      0deg,
+      rgba(31, 41, 55, 0.8) 0%, 
+      rgba(17, 24, 39, 0.8) 42%, 
+      rgba(15, 23, 42, 0.8) 83%
+    );
   }
 
   /* <<Container>> */
@@ -47,6 +61,7 @@
     h1 {
       font-size: 34px;
       font-weight: 800;
+      color: $color-dark;
 
       @media (min-width: 768px) {
         font-size: 56px;
@@ -54,6 +69,11 @@
 
       @media (min-width: 1400px) {
         text-align: left;
+      }
+
+      /* Dark mode text color */
+      [data-theme="dark"] & {
+        color: $color-white-dark;
       }
     }
   }
@@ -71,6 +91,12 @@
     p {
       font-size: 18px;
       margin-bottom: 2rem;
+      color: $color-gray;
+
+      /* Dark mode text color */
+      [data-theme="dark"] & {
+        color: $color-muted-text-dark;
+      }
     }
 
     /* <<Buttons>> */
@@ -100,6 +126,12 @@
         color: $color-white;
         text-decoration: none;
       }
+
+      /* Dark mode button color */
+      [data-theme="dark"] & .btn-download-app {
+        background-color: $color-primary-dark;
+        color: $color-white-dark;
+      }
     }
 
     /* <<Discover More Button>> */
@@ -118,6 +150,21 @@
 
       @media (min-width: 1400px) {
         margin-top: 10rem;
+      }
+
+      .btn-circle {
+        background-color: $color-primary;
+        color: $color-white;
+      }
+
+      /* Dark mode discover more button */
+      [data-theme="dark"] & {
+        color: $color-white-dark;
+
+        .btn-circle {
+          background-color: $color-primary-dark;
+          color: $color-white-dark;
+        }
       }
     }
   }

@@ -5,35 +5,41 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 60px;
-  background-color: $color-gray-700; // Bakgrundsfärg för hela sektionen (light mode)
+  background-color: $color-gray-700;
   margin: 0;
-  width: 100vw;
-  padding: 6rem 10rem;
+  width: 100%;
+  padding: 6rem 5vw; // Använd vw för bättre responsiv padding
 
-  // Döljer sektionen på tablet och mobil
+  // Dark mode bakgrund
+  [data-theme="dark"] & {
+    background-color: $color-secondary-dark;
+  }
+
   @media (max-width: 1024px) {
     display: none;
   }
 
-  // Titel för testimonials
   .testimonials-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -15rem;
-    padding-left: 50px;
+    padding-left: 2rem;
 
     h2 {
-      padding-bottom: 0rem;
       font-size: 40px;
       font-weight: 800;
       color: $color-dark;
+
+      // Dark mode textfärg
+      [data-theme="dark"] & {
+        color: $color-white-dark;
+      }
+
       max-width: 350px;
       line-height: 1.2;
     }
   }
 
-  // Grid för recensionerna
   .testimonials-reviews {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -43,58 +49,62 @@
       grid-template-columns: 1fr;
     }
 
-    // Styling för varje testimonial
     .testimonial {
-      background-color: #fff;
+      background-color: $color-white;
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
 
-      &:hover {
-        transform: translateY(-5px); // Flytta uppåt vid hover
+      // Dark mode bakgrund
+      [data-theme="dark"] & {
+        background-color: $color-secondary-dark;
       }
 
-      // Header med citattecken och stjärnor
+      &:hover {
+        transform: translateY(-5px);
+      }
+
       .testimonial-header {
         display: flex;
         align-items: center;
         gap: 10px;
 
-        // Citatteckensbilden
         .quote-icon {
           width: 40px;
           height: 40px;
-          margin-top: -5em; // Flytta upp ikonen ovanför boxen
           position: relative;
-          z-index: 1; // Se till att ikonen visas ovanför boxen
+          z-index: 1;
         }
 
-        // Stjärnorna
         .stars {
-          color: #FFD43B; // Gula stjärnor
-          font-size: 1rem; // Öka storleken på stjärnorna för bättre synlighet
+          color: #FFD43B;
+          font-size: 1rem;
         }
       }
 
-      // Text för varje recension
       p {
         font-size: 1.1rem;
         margin: 20px 0;
-        color: #888;
+        color: $color-gray;
+
+        // Dark mode textfärg
+        [data-theme="dark"] & {
+          color: $color-muted-text-dark;
+        }
+
         line-height: 1.6;
       }
 
-      // Författarinformation (namn och titel)
       .testimonial-author {
         display: flex;
         align-items: center;
         gap: 10px;
 
         img {
-          width: 50px; // Gör författarbilden något större
+          width: 50px;
           height: 50px;
-          border-radius: 50%; // Gör bilden rund
+          border-radius: 50%;
         }
 
         .author-info {
@@ -103,12 +113,22 @@
             margin: 0;
             font-weight: bold;
             color: #333;
+
+            // Dark mode färg
+            [data-theme="dark"] & {
+              color: $color-white-dark;
+            }
           }
 
           p {
             font-size: 1rem;
             color: #888;
             margin: 0;
+
+            // Dark mode färg
+            [data-theme="dark"] & {
+              color: $color-muted-text-dark;
+            }
           }
         }
       }
